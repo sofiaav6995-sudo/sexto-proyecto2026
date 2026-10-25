@@ -41,12 +41,12 @@ window.PROYECTO = {
 
   // --- Docentes (el auditor recibe los reportes del Project Manager) ---
   docentes: [
-    { asignatura: "Laboratorio de Hardware", nombre: "A completar" },
-    { asignatura: "Laboratorio de Sistemas Operativos", nombre: "A completar" },
-    { asignatura: "Laboratorio de Aplicaciones", nombre: "A completar" },
-    { asignatura: "Desarrollo de Software", nombre: "A completar" },
-    { asignatura: "Investigación Operativa", nombre: "A completar" },
-    { asignatura: "Seguridad Informática", nombre: "A completar" }
+    { asignatura: "Laboratorio de Hardware", nombre: "Werner Gustavo" },
+    { asignatura: "Laboratorio de Sistemas Operativos", nombre: "Martini Diego" },
+    { asignatura: "Laboratorio de Aplicaciones", nombre: "De Donato Marcelo" },
+    { asignatura: "Desarrollo de Software", nombre: "Barral Martín" },
+    { asignatura: "Investigación Operativa", nombre: "Santisi Gabriel" },
+    { asignatura: "Seguridad Informática", nombre: "Pedaci Lourdes" }
   ],
   auditor: "A completar",
 
