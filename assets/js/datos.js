@@ -31,11 +31,11 @@ window.PROYECTO = {
   // rol: "pm" | "desarrollo" | "aplicaciones" | "infraestructura"
   // foto: ruta a una imagen (ej. "assets/img/integrantes/ana.jpg") o "" para iniciales
   integrantes: [
-    { nombre: "Ávila, Sofía", rol: "pm", foto: "", github: "" },
-    { nombre: "Coronel, Camila", rol: "aplicaciones", foto: "", github: "" },
-    { nombre: "Diez, Emiliano", rol: "desarrollo", foto: "", github: "" },
-    { nombre: "Madariaga, Juliana", rol: "infraestructura", foto: "", github: "" },
-    { nombre: "Raimondo, Mía", rol: "desarrollo", foto: "", github: "" }
+    { nombre: "Ávila Sofía", rol: "pm", foto: "", github: "" },
+    { nombre: "Coronel Camila", rol: "aplicaciones", foto: "", github: "" },
+    { nombre: "Diez Emiliano", rol: "desarrollo", foto: "", github: "" },
+    { nombre: "Madariaga Juliana", rol: "infraestructura", foto: "", github: "" },
+    { nombre: "Raimondo Mía", rol: "desarrollo", foto: "", github: "" }
   ],
 
 
