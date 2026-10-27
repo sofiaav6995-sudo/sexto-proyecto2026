@@ -15,7 +15,7 @@ window.PROYECTO = {
 
   // Nodo que construye este equipo (uno de: luz, presencia, aire, ruido,
   // consumo, suelo, red). Define qué sensor específico se destaca.
-  nodoAsignado: "suelo",
+  nodoAsignado: "de Exterior",
 
   // --- Acceso al proyecto ---
   // previewUrl: dirección pública del dashboard (GitHub Pages, Netlify, Grafana
