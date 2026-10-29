@@ -231,7 +231,7 @@ tr.crit td { background: color-mix(in srgb, var(--a-seginfo) 10%, transparent); 
 /* Componentes */
 .comp { display: flex; flex-direction: column; padding: 0; overflow: hidden; }
 .comp figure { margin: 0; background: var(--plate); aspect-ratio: 3 / 2; display: grid; place-items: center; }
-.comp figure img { width: 88%; height: 88%; object-fit: contain; }
+.comp figure img { width: 88%; height: 88%; object-fit: contain; mix-blend-mode: multiply; }
 .comp .body { padding: 14px 16px 16px; }
 .comp h3 { margin: 0 0 4px; font-size: 1rem; }
 .comp p { margin: 4px 0; font-size: 14px; color: var(--text-2); }
@@ -524,3 +524,16 @@ tr.crit td { background: color-mix(in srgb, var(--a-seginfo) 10%, transparent); 
 
 /* Lo oculto siempre queda oculto, aunque el componente defina display */
 [hidden] { display: none !important; }
+
+
+/* Tabla de planificación y bitácora (8.1) */
+.plan-wrap table { min-width: 860px; }
+.plan-wrap td, .plan-wrap th { vertical-align: top; }
+.plan-wrap .plan-etapa th { background: var(--surface-2); text-align: left; font-weight: 600; }
+.plan-wrap td:nth-child(3), .plan-wrap td:nth-child(4) { white-space: nowrap; font-family: var(--mono); font-size: 13px; }
+.plan-wrap td:nth-child(5) { min-width: 96px; }
+.plan-wrap td:nth-child(6) { font-size: 13.5px; color: var(--text-2); min-width: 280px; }
+.avance { height: 8px; border-radius: 999px; background: var(--border); overflow: hidden; margin-bottom: 4px; }
+.avance span { display: block; height: 100%; background: var(--ok, #16a34a); border-radius: 999px; }
+.plan-wrap small { font-family: var(--mono); font-size: 12px; color: var(--text-2); }
+.plan-resumen { font: 600 12.5px var(--mono); color: var(--text-2); }
