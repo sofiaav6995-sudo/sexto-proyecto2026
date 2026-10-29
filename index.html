@@ -1,4 +1,3 @@
-[index.html](https://github.com/user-attachments/files/33939048/index.html)
 <!doctype html>
 <html lang="es">
 <head>
@@ -78,7 +77,7 @@
       <div><b>Equipo</b><span data-bind="equipo"></span></div>
       <div><b>Integrantes</b><span data-bind="apellidos"></span></div>
       <div><b>Curso</b><span data-bind="curso"></span></div>
-      <div><b>Nodo asignado</b><span data-bind="Nodo Exterior"></span></div>
+      <div><b>Nodo asignado</b><span data-bind="nodoNombre"></span></div>
       <div><b>Institución</b><span data-bind="institucion"></span></div>
       <div><b>Estado del proyecto</b><span id="estadoPublicacion"></span></div>
     </div>
@@ -180,9 +179,8 @@
 
   <h3>Variables que puede monitorear el sistema</h3>
   <div class="grid">
-    <div class="card"><b>Ambiente</b><p style="margin:4px 0 0;color:var(--text-2);font-size:14.5px">Temperatura, humedad, luminosidad, calidad de aire (CO).</p></div>
-    <div class="card"><b>Uso de los espacios</b><p style="margin:4px 0 0;color:var(--text-2);font-size:14.5px">Presencia, nivel sonoro (dB), estado de un aula o laboratorio.</p></div>
-    <div class="card"><b>Exterior y energía</b><p style="margin:4px 0 0;color:var(--text-2);font-size:14.5px">Humedad de suelo de la huerta, consumo eléctrico básico.</p></div>
+    <div class="card"><b>Ambiente</b><p style="margin:4px 0 0;color:var(--text-2);font-size:14.5px">Temperatura, humedad del aire e intensidad lumínica.</p></div>
+    <div class="card"><b>Exterior</b><p style="margin:4px 0 0;color:var(--text-2);font-size:14.5px">Humedad del suelo de la huerta.</p></div>
     <div class="card"><b>Infraestructura</b><p style="margin:4px 0 0;color:var(--text-2);font-size:14.5px">Estado de la red de datos (latencia y señal WiFi).</p></div>
   </div>
 
@@ -190,8 +188,8 @@
   <div class="table-wrap"><table>
     <thead><tr><th>Módulo</th><th>Qué mide o muestra</th></tr></thead>
     <tbody>
-      <tr><td>1 · Monitoreo ambiental de aulas</td><td>Temperatura, humedad, luz, presencia</td></tr>
-      <tr><td>2 · Monitoreo de laboratorio</td><td>Temperatura, humedad, ruido, estado del espacio</td></tr>
+      <tr><td>1 · Monitoreo ambiental de aulas</td><td>Temperatura, humedad, luz</td></tr>
+      <tr><td>2 · Monitoreo de laboratorio</td><td>Temperatura, humedad, estado del espacio</td></tr>
       <tr><td>3 · Exterior / huerta</td><td>Temperatura exterior, humedad de suelo, luz ambiente</td></tr>
       <tr><td>4 · Tablero central institucional</td><td>Dashboard general, ranking por estado, semáforo por sectores, histórico</td></tr>
       <tr><td>5 · Alertas</td><td>Alta temperatura, humedad fuera de rango, nodo desconectado</td></tr>
@@ -393,35 +391,21 @@
   <h1>8. Carta Gantt</h1>
   <p class="lead">Cronograma anual de marzo a noviembre: seis etapas, tareas por área, sprints, hitos de entrega y la fecha de hoy.</p>
 
-  <h2>8.1 Gantt del equipo (Google Sheets)</h2>
-  <p>El equipo lleva su carta Gantt en una planilla de Google Sheets y la muestra acá embebida, así siempre se ve la versión actualizada.</p>
-  <div class="sheet" id="sheet">
-    <div class="sheet-bar">
-      <span class="status off" id="sheetEstado">Sin planilla</span>
-      <span class="spacer"></span>
-      <a class="btn" id="sheetOpen" target="_blank" rel="noopener" hidden><svg class="icon"><use href="#i-ext"/></svg>Abrir en Sheets</a>
-    </div>
-    <div class="sheet-empty" id="sheetEmpty">
-      <svg class="big" aria-hidden="true"><use href="#i-table"/></svg>
-      <h3>Falta embeber la planilla de la Gantt</h3>
-      <p>Publiquen la planilla y peguen el enlace en <code>ganttSheetUrl</code> dentro de <code>assets/js/datos.js</code>.</p>
-      <ol class="steps">
-        <li><div>En Google Sheets: <b>Archivo → Compartir → Publicar en la Web</b>.</div></li>
-        <li><div>Elijan la hoja de la Gantt, la pestaña <b>Insertar</b> y presionen <b>Publicar</b>.</div></li>
-        <li><div>Copien la dirección que está dentro de <code>src="…"</code> (termina en <code>/pubhtml?…</code>) y péguenla en <code>ganttSheetUrl</code>.</div></li>
-      </ol>
-    </div>
-    <iframe class="sheet-frame" id="sheetFrame" title="Carta Gantt del equipo en Google Sheets" hidden loading="lazy"></iframe>
-  </div>
+  <h2>8.1 Planificación y bitácora del equipo</h2>
+  <p>Detalle de cada tarea con su responsable, fechas, porcentaje de avance y lo que se hizo (bitácora). <span class="plan-resumen" id="planResumen"></span></p>
+  <div class="table-wrap plan-wrap"><table>
+    <thead><tr><th scope="col">Tarea</th><th scope="col">Responsable</th><th scope="col">Inicio</th><th scope="col">Fin</th><th scope="col">Avance</th><th scope="col">Bitácora</th></tr></thead>
+    <tbody id="planTabla"></tbody>
+  </table></div>
 
-  <h2>8.2 Cronograma de referencia</h2>
-  <p>Planificación institucional sugerida. Sirve de base para armar la Gantt del equipo.</p>
+  <h2>8.2 Carta Gantt</h2>
+  <p>Cronograma del equipo, armado con las mismas tareas y fechas de la tabla anterior.</p>
   <div class="gantt-legend" id="ganttLegend"></div>
   <div class="gantt" id="gantt-chart" tabindex="0" aria-label="Carta Gantt, se puede desplazar horizontalmente"></div>
   <p style="font-size:13.5px;color:var(--text-2)">◆ Hito / entregable · Línea roja: hoy · Rayado: receso invernal. En pantallas chicas la tabla se desplaza hacia el costado.</p>
   <div class="callout todo">
     <strong><svg class="icon"><use href="#i-edit"/></svg>A completar por el equipo</strong>
-    <p>Mantengan la Gantt actualizada en la planilla de Google Sheets. Si quieren cambiar el cronograma de referencia, editen <code>datos.js → gantt</code>. Si una tarea se atrasa, actualicen la fecha de fin y anoten el cambio en el <a href="#cambios">control de cambios</a>.</p>
+    <p>Para actualizar avances, fechas o la bitácora, editen <code>datos.js → gantt</code> (campos <code>avance</code>, <code>fin</code> y <code>bitacora</code>). Si una tarea se atrasa, actualicen la fecha de fin y anoten el cambio en el <a href="#cambios">control de cambios</a>.</p>
   </div>
 </section>
 
@@ -513,7 +497,7 @@
       <rect class="d-box" x="60" y="60" width="300" height="200" rx="10" stroke-width="2"/>
       <rect class="d-accent" x="100" y="96" width="220" height="74" rx="4"/>
       <text class="d-text" x="210" y="128" text-anchor="middle" font-family="monospace">T:23.4C H:48%</text>
-      <text class="d-text" x="210" y="150" text-anchor="middle" font-family="monospace">CO: 12ppm  OK</text>
+      <text class="d-text" x="210" y="150" text-anchor="middle" font-family="monospace">Suelo: 41%  OK</text>
       <circle cx="334" cy="84" r="6" fill="#4ade80"/><text class="d-small" x="322" y="88" text-anchor="end">LED estado</text>
       <g class="d-line">
         <path d="M110 206 v34 M126 206 v34 M142 206 v34 M158 206 v34 M174 206 v34 M190 206 v34"/>
@@ -619,8 +603,8 @@
   <h2>Sensores específicos</h2>
   <div class="grid" id="compEsp"></div>
   <div class="callout todo">
-    <strong><svg class="icon"><use href="#i-edit"/></svg>A completar por el equipo</strong>
-    <p>Las imágenes son ilustraciones de referencia. Reemplácenlas por <b>fotos propias</b> de los componentes que compraron (fondo claro, 1200 × 800 px), guardadas en <code>assets/img/componentes/</code> con el mismo nombre.</p>
+    <strong><svg class="icon"><use href="#i-info"/></svg>Sobre las imágenes</strong>
+    <p>Las fotos son de los componentes que compró el equipo. Si quieren cambiar alguna por una foto propia, súbanla a <code>assets/img/componentes/</code> con el mismo nombre (fondo claro). El monitoreo de red es una ilustración porque no usa un sensor físico.</p>
   </div>
 </section>
 
@@ -637,7 +621,7 @@
       <rect class="d-box" x="10" y="10" width="880" height="46" rx="10"/><text class="d-title" x="30" y="38">Smart Campus IoT</text><text class="d-small" x="870" y="38" text-anchor="end">actualizado hace 12 s</text>
       <g>
         <rect class="d-box" x="30" y="74" width="196" height="96" rx="8"/><circle cx="52" cy="96" r="8" fill="#22c55e"/><text class="d-title" x="68" y="100">Aula 1</text><text class="d-text" x="46" y="132" font-size="22">23.4 °C</text><text class="d-small" x="46" y="156">H 48 % · Luz 410 lx</text>
-        <rect class="d-box" x="240" y="74" width="196" height="96" rx="8"/><circle cx="262" cy="96" r="8" fill="#eab308"/><text class="d-title" x="278" y="100">Lab. Hardware</text><text class="d-text" x="256" y="132" font-size="22">27.9 °C</text><text class="d-small" x="256" y="156">CO 18 ppm · ventilar</text>
+        <rect class="d-box" x="240" y="74" width="196" height="96" rx="8"/><circle cx="262" cy="96" r="8" fill="#eab308"/><text class="d-title" x="278" y="100">Lab. Hardware</text><text class="d-text" x="256" y="132" font-size="22">27.9 °C</text><text class="d-small" x="256" y="156">Suelo 38 % · regar</text>
         <rect class="d-box" x="450" y="74" width="196" height="96" rx="8"/><circle cx="472" cy="96" r="8" fill="#22c55e"/><text class="d-title" x="488" y="100">Huerta</text><text class="d-text" x="466" y="132" font-size="22">Suelo 61 %</text><text class="d-small" x="466" y="156">T 19.2 °C</text>
         <rect class="d-box" x="660" y="74" width="210" height="96" rx="8"/><circle cx="682" cy="96" r="8" fill="#94a3b8"/><text class="d-title" x="698" y="100">Sala Informática</text><text class="d-text" x="676" y="132" font-size="22">Sin datos</text><text class="d-small" x="676" y="156">nodo desconectado 6 min</text>
       </g>
@@ -645,7 +629,7 @@
       <path class="d-line" d="M50 340 H570 M50 230 V340"/>
       <path class="mg-line" d="M50 320 C110 310 140 280 200 286 S300 250 350 262 S450 230 500 246 S550 240 570 236" fill="none" stroke="var(--accent)" stroke-width="2.5"/>
       <rect class="d-box" x="606" y="188" width="264" height="184" rx="8"/><text class="d-title" x="622" y="212">Alertas</text>
-      <g class="d-small"><text x="622" y="244">▲ Lab. Hardware · CO alto · 10:42</text><text x="622" y="270">● Sala Informática · offline · 10:36</text><text x="622" y="296">▲ Aula 2 · temp. &gt; 28 °C · 09:15</text></g>
+      <g class="d-small"><text x="622" y="244">▲ Lab. Hardware · temp. alta · 10:42</text><text x="622" y="270">● Sala Informática · offline · 10:36</text><text x="622" y="296">▲ Aula 2 · temp. &gt; 28 °C · 09:15</text></g>
     </svg>
     <figcaption>Maqueta de baja fidelidad. El color del semáforo siempre va acompañado de un texto (para que se entienda también sin distinguir colores).</figcaption>
   </figure>
@@ -655,8 +639,6 @@
     <tbody>
       <tr><td>Temperatura interior</td><td>18 – 26 °C</td><td>16 – 18 / 26 – 30 °C</td><td>&lt; 16 / &gt; 30 °C</td></tr>
       <tr><td>Humedad relativa</td><td>40 – 60 %</td><td>30 – 40 / 60 – 70 %</td><td>&lt; 30 / &gt; 70 %</td></tr>
-      <tr><td>Monóxido de carbono</td><td>&lt; 9 ppm</td><td>9 – 35 ppm</td><td>&gt; 35 ppm</td></tr>
-      <tr><td>Nivel sonoro</td><td>&lt; 55 dB</td><td>55 – 70 dB</td><td>&gt; 70 dB</td></tr>
       <tr><td>Nodo</td><td>Datos hace &lt; 2 min</td><td>2 – 5 min</td><td>Desconectado &gt; 5 min</td></tr>
     </tbody>
   </table></div>
@@ -730,7 +712,7 @@
   <ol class="steps">
     <li><div>Abran <code>assets/js/datos.js</code> con un editor de código (por ejemplo VS Code).</div></li>
     <li><div>Completen nombre del equipo, curso, <b>nodo asignado</b> e integrantes con el formato <code>"Apellido, Nombre"</code>.</div></li>
-    <li><div>Publiquen la planilla de la Gantt en Google Sheets y peguen el enlace en <code>ganttSheetUrl</code> (ver <a href="#gantt">Carta Gantt</a>).</div></li>
+    <li><div>Actualicen la Carta Gantt editando <code>datos.js → gantt</code> (avance, fechas y bitácora de cada tarea).</div></li>
     <li><div>Actualicen la Gantt, el presupuesto, las pruebas y el control de cambios a medida que avanza el proyecto.</div></li>
     <li><div>Los textos largos de cada apartado se editan directamente en <code>index.html</code>.</div></li>
   </ol>
