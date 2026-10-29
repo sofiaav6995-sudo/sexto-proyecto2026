@@ -13,9 +13,8 @@ window.PROYECTO = {
   institucion: "Instituto Leonardo Murialdo",
   ciclo: "2026",
 
-  // Nodo que construye este equipo (uno de: luz, presencia, aire, ruido,
-  // consumo, suelo, red). Define qué sensor específico se destaca.
-  nodoAsignado: "de Exterior",
+  // Nodo que construye este equipo (uno de: luz, suelo [Nodo exterior], red). Define qué sensor específico se destaca.
+  nodoAsignado: "suelo",
 
   // --- Acceso al proyecto ---
   // previewUrl: dirección pública del dashboard (GitHub Pages, Netlify, Grafana
@@ -23,9 +22,8 @@ window.PROYECTO = {
   previewUrl: "",
   repoUrl: "https://github.com/sofiaav6995-sudo/sexto-proyecto2026",                        // repositorio del código (GitHub)
 
-  // Carta Gantt en Google Sheets: Archivo → Compartir → Publicar en la Web →
-  // Insertar → copiar la dirección de src="…" (termina en /pubhtml?...)
-  ganttSheetUrl: "https://docs.google.com/spreadsheets/d/1hxVVxGKrQ8d4_hzwxXjZPC_Tk9PpDAv138S7JZd0DAw/edit?usp=sharing",
+  // (Ya no se usa: la Carta Gantt se arma desde "gantt", más abajo.)
+  ganttSheetUrl: "",
 
   // --- Integrantes ---
   // rol: "pm" | "desarrollo" | "aplicaciones" | "infraestructura"
@@ -57,61 +55,68 @@ window.PROYECTO = {
     { version: "0.3", fecha: "", responsable: "Infraestructura", detalle: "Diagrama de servicios del servidor y matriz de riesgos inicial." }
   ],
 
-  // --- Carta Gantt: fechas en formato AAAA-MM-DD ---
-  // area: pm | hardware | so | desarrollo | aplicaciones | io | seginfo
-  // hito: true -> se dibuja como rombo (entregable)
+  // --- Carta Gantt (planificación del equipo, según la planilla actualizada) ---
+  // area: pm | aplicaciones | desarrollo | hardware (infraestructura) | io (documentación)
+  // resp / avance (0-100) / bitacora se muestran en la tabla 8.1; hito: true -> rombo
   gantt: [
-    { etapa: "Etapa 1 · Lanzamiento y análisis", tareas: [
-      { nombre: "Presentación del desafío y formación de equipos", area: "pm", inicio: "2026-03-02", fin: "2026-03-13" },
-      { nombre: "Definición del problema e investigación de antecedentes", area: "pm", inicio: "2026-03-09", fin: "2026-03-27" },
-      { nombre: "Definición de variables a medir", area: "hardware", inicio: "2026-03-23", fin: "2026-04-03" },
-      { nombre: "Bosquejo de arquitectura", area: "so", inicio: "2026-03-30", fin: "2026-04-17" },
-      { nombre: "Inventario de activos y riesgos iniciales", area: "seginfo", inicio: "2026-04-06", fin: "2026-04-17" },
-      { nombre: "Anteproyecto + diagrama inicial", area: "pm", inicio: "2026-04-17", fin: "2026-04-17", hito: true }
+    { etapa: "Etapa 1 · Equipo y roles", tareas: [
+      { nombre: "Armado de equipo", area: "pm", inicio: "2026-08-11", fin: "2026-08-14", resp: "Todo el equipo", avance: 100, bitacora: "Se conformó el equipo de trabajo y se organizaron los integrantes para comenzar con el proyecto." },
+      { nombre: "Definimos Roles", area: "pm", inicio: "2026-08-14", fin: "2026-08-14", resp: "Todo el equipo (PM: Ávila · Aplicaciones: Coronel · Desarrollo: Diez · Infraestructura: Madariaga · Documentación: Raimondo)", avance: 100, bitacora: "Se realizó la reunión inicial de equipo donde definimos y distribuimos las responsabilidades y roles principales del proyecto (PM, Aplicaciones, Desarrollo, Infraestructura y Documentación) para garantizar un seguimiento estructurado." }
     ]},
-    { etapa: "Etapa 2 · Diseño técnico", tareas: [
-      { nombre: "Selección de sensores y pruebas individuales", area: "hardware", inicio: "2026-04-20", fin: "2026-05-15" },
-      { nombre: "Matriz de decisión de sensores", area: "io", inicio: "2026-04-20", fin: "2026-05-01" },
-      { nombre: "Definición de tópicos MQTT", area: "desarrollo", inicio: "2026-05-04", fin: "2026-05-15" },
-      { nombre: "Diseño del servidor", area: "so", inicio: "2026-05-04", fin: "2026-05-22" },
-      { nombre: "Wireframe del dashboard", area: "aplicaciones", inicio: "2026-05-11", fin: "2026-05-29" },
-      { nombre: "Red PERT/CPM del proyecto", area: "io", inicio: "2026-05-18", fin: "2026-05-29" },
-      { nombre: "Diseño del nodo + primer BOM", area: "pm", inicio: "2026-05-29", fin: "2026-05-29", hito: true }
+    { etapa: "Etapa 2 · Materiales y compra", tareas: [
+      { nombre: "Lista de materiales", area: "pm", inicio: "2026-08-18", fin: "2026-08-18", resp: "Todo el equipo", avance: 100, bitacora: "Ya tenemos la bateria de 12v, la caja de herramientas (faltan herramientas). Estuvimos observando en la pagina web los materiales necesarios para el proyecto." },
+      { nombre: "Busqueda, seleccion", area: "pm", inicio: "2026-08-20", fin: "2026-08-21", resp: "Todo el equipo", avance: 100, bitacora: "Se realizó la búsqueda de los materiales necesarios para el proyecto en una página web, comparando las opciones disponibles y seleccionando los materiales adecuados." },
+      { nombre: "Juntar dinero", area: "pm", inicio: "2026-08-20", fin: "2026-08-21", resp: "Todo el equipo", avance: 100, bitacora: "Se reunio el dinero necesario para la compra de materiales." },
+      { nombre: "Compra de materiales", area: "desarrollo", inicio: "2026-08-20", fin: "2026-08-21", resp: "Diez Emiliano", avance: 100, bitacora: "" },
+      { nombre: "Recepcion de materiales", area: "desarrollo", inicio: "2026-08-21", fin: "2026-08-21", resp: "Diez Emiliano", avance: 100, bitacora: "Se recibieron los materiales necesarios para comenzar el desarrollo del proyecto." }
     ]},
-    { etapa: "Etapa 3 · Prototipo funcional", tareas: [
-      { nombre: "Nodo ESP32 en protoboard", area: "hardware", inicio: "2026-06-01", fin: "2026-06-26" },
-      { nombre: "Firmware: lectura de sensores", area: "desarrollo", inicio: "2026-06-08", fin: "2026-07-03" },
-      { nombre: "Servidor Linux + Mosquitto", area: "so", inicio: "2026-06-01", fin: "2026-06-26" },
-      { nombre: "Hardening básico del servidor", area: "seginfo", inicio: "2026-06-22", fin: "2026-07-10" },
-      { nombre: "Primeras pruebas MQTT", area: "desarrollo", inicio: "2026-06-29", fin: "2026-07-10" },
-      { nombre: "Dashboard mínimo", area: "aplicaciones", inicio: "2026-06-15", fin: "2026-07-17" },
-      { nombre: "Demo parcial funcional", area: "pm", inicio: "2026-07-17", fin: "2026-07-17", hito: true }
+    { etapa: "Etapa 3 · ESP32 y display", tareas: [
+      { nombre: "Mac adress", area: "pm", inicio: "2026-08-25", fin: "2026-08-28", resp: "Ávila Sofia · Diez Emiliano · Madariaga Juliana", avance: 100, bitacora: "Pudimos encontrar la direccion MAC de este ESP32" },
+      { nombre: "Documentacion", area: "pm", inicio: "2026-08-25", fin: "2026-08-28", resp: "Ávila Sofia · Raimondo Mia", avance: 50, bitacora: "Actualizacion de la documentacion" },
+      { nombre: "Display", area: "pm", inicio: "2026-08-25", fin: "2026-08-28", resp: "Ávila Sofia · Diez Emiliano · Madariaga Juliana", avance: 100, bitacora: "" }
     ]},
-    { etapa: "Etapa 4 · Integración", tareas: [
-      { nombre: "Integración nodos ↔ servidor", area: "desarrollo", inicio: "2026-08-03", fin: "2026-08-28" },
-      { nombre: "Base de datos histórica", area: "so", inicio: "2026-08-03", fin: "2026-08-21" },
-      { nombre: "Seguridad MQTT: usuarios, ACL y TLS", area: "seginfo", inicio: "2026-08-17", fin: "2026-09-04" },
-      { nombre: "Visualización unificada", area: "aplicaciones", inicio: "2026-08-17", fin: "2026-09-18" },
-      { nombre: "Mejoras de firmware (reconexión, errores)", area: "desarrollo", inicio: "2026-08-24", fin: "2026-09-11" },
-      { nombre: "Optimización de ubicación y presupuesto", area: "io", inicio: "2026-08-31", fin: "2026-09-18" },
-      { nombre: "Pruebas de estabilidad", area: "pm", inicio: "2026-09-07", fin: "2026-09-25" },
-      { nombre: "Versión beta del sistema", area: "pm", inicio: "2026-09-25", fin: "2026-09-25", hito: true }
+    { etapa: "Etapa 4 · Sensores, código y diseño", tareas: [
+      { nombre: "Prueba de conexión de sensores", area: "hardware", inicio: "2026-09-22", fin: "2026-09-22", resp: "Madariaga Juliana", avance: 100, bitacora: "Conexión del sensor de humedad de suelo, calidad de aire y luz ambiente a los pines asignados del ESP32." },
+      { nombre: "Pruebas individuales de código", area: "desarrollo", inicio: "2026-09-22", fin: "2026-09-22", resp: "Diez Emiliano", avance: 100, bitacora: "Verificación de lecturas independientes de cada sensor desde el entorno de desarrollo y monitor serie." },
+      { nombre: "Boceto de interfaz visual", area: "aplicaciones", inicio: "2026-09-22", fin: "2026-09-22", resp: "Coronel Camila", avance: 100, bitacora: "Armado del esquema visual y distribución de los datos de los 3 sensores para la pantalla/aplicación." },
+      { nombre: "Registro de las actividades", area: "io", inicio: "2026-09-22", fin: "2026-09-22", resp: "Raimondo Mia", avance: 100, bitacora: "Documentación técnica de pines utilizados, fichas de sensores y actualización de la bitácora diaria." },
+      { nombre: "Diseño de la infraestructura", area: "hardware", inicio: "2026-09-29", fin: "2026-09-29", resp: "Madariaga Juliana", avance: 100, bitacora: "Ubicamos donde irian los sensores y los componentes en la caja de paso estanca." },
+      { nombre: "Calibración y escala de datos", area: "desarrollo", inicio: "2026-09-29", fin: "2026-09-29", resp: "Diez Emiliano", avance: 100, bitacora: "lecturas de la unidad reales (porcentaje de humedad, nivel de luz y temperatura en el display)." },
+      { nombre: "Conexion de los sensores (con usb)", area: "hardware", inicio: "2026-09-29", fin: "2026-09-29", resp: "Madariaga Juliana", avance: 100, bitacora: "Reorganización en el protoboard." },
+      { nombre: "Control de cronograma", area: "pm", inicio: "2026-09-29", fin: "2026-09-29", resp: "Ávila Sofia", avance: 100, bitacora: "Verificación de las tareas para evitar demoras." },
+      { nombre: "Continuacion de la documentacion", area: "io", inicio: "2026-09-29", fin: "2026-09-29", resp: "Raimondo Mia", avance: 100, bitacora: "Continuamos con la documentacion actualizando la informacion." }
     ]},
-    { etapa: "Etapa 5 · Producto final", tareas: [
-      { nombre: "Montaje prolijo y gabinete definitivo", area: "hardware", inicio: "2026-09-28", fin: "2026-10-23" },
-      { nombre: "Auditoría de seguridad del sistema", area: "seginfo", inicio: "2026-10-05", fin: "2026-10-23" },
-      { nombre: "Documentación completa", area: "pm", inicio: "2026-10-05", fin: "2026-10-30" },
-      { nombre: "Pruebas finales y validación", area: "pm", inicio: "2026-10-19", fin: "2026-10-30" },
-      { nombre: "Versión candidata final", area: "pm", inicio: "2026-10-30", fin: "2026-10-30", hito: true }
+    { etapa: "Etapa 5 · WiFi, plataforma y circuito", tareas: [
+      { nombre: "instalacion de antena WIFI", area: "hardware", inicio: "2026-10-06", fin: "2026-10-06", resp: "Madariaga Juliana · Ávila Sofia", avance: 100, bitacora: "Configuración de la red WiFi en el ESP32 para transmisión en tiempo real a la nube/plataforma." },
+      { nombre: "Vinculación con plataforma web", area: "aplicaciones", inicio: "2026-10-06", fin: "2026-10-06", resp: "Coronel Camila", avance: 100, bitacora: "Configuración del tablero web/app para la recepción continua de parámetros ambientales." },
+      { nombre: "Diseño físico de caja", area: "pm", inicio: "2026-10-06", fin: "2026-10-06", resp: "Ávila Sofia · Madariaga Juliana · Raimondo Mia", avance: 100, bitacora: "Planificación de espacio interior y perforaciones para sensores expuestos en la caja de herramientas." },
+      { nombre: "Diseño del circuito", area: "hardware", inicio: "2026-10-07", fin: "2026-10-07", resp: "Madariaga Juliana · Ávila Sofia", avance: 50, bitacora: "Realizamos el diseño de la placa experimental con las conexiones" },
+      { nombre: "Soldar los componentes", area: "hardware", inicio: "2026-10-08", fin: "2026-10-08", resp: "Madariaga Juliana", avance: 0, bitacora: "Soldamos los componentes a la placa experimental" },
+      { nombre: "Conectar la bateria y el regulador", area: "hardware", inicio: "2026-10-09", fin: "2026-10-09", resp: "Madariaga Juliana", avance: 0, bitacora: "Planificación de la alimentación" },
+      { nombre: "Validación de flujo completo", area: "pm", inicio: "2026-10-06", fin: "2026-10-06", resp: "Ávila Sofia", avance: 50, bitacora: "Control de transmisión integral (Sensor -> ESP32 -> WiFi -> Aplicación)." },
+      { nombre: "Programacion de envio WIFI", area: "desarrollo", inicio: "2026-10-06", fin: "2026-10-07", resp: "Diez Emiliano", avance: 100, bitacora: "Elaboración de la sección de comunicaciones y protocolos en el informe técnico." }
     ]},
-    { etapa: "Etapa 6 · Presentación y defensa", tareas: [
-      { nombre: "Afiche, panel y video breve", area: "aplicaciones", inicio: "2026-11-02", fin: "2026-11-13" },
-      { nombre: "Ensayo de demo en vivo", area: "pm", inicio: "2026-11-09", fin: "2026-11-20" },
-      { nombre: "Defensa interdisciplinaria", area: "pm", inicio: "2026-11-20", fin: "2026-11-20", hito: true }
+    { etapa: "Etapa 6 · Montaje, pruebas y documentación", tareas: [
+      { nombre: "Montaje final en gabinete", area: "hardware", inicio: "2026-10-13", fin: "2026-10-13", resp: "Madariaga Juliana", avance: 0, bitacora: "Fijación de batería, ESP32, display y sensores de manera fija y limpia dentro del gabinete." },
+      { nombre: "Panel de control y alertas", area: "aplicaciones", inicio: "2026-10-13", fin: "2026-10-13", resp: "Coronel Camila", avance: 100, bitacora: "Incorporación de alertas visuales en la aplicación ante valores fuera de rango normal." },
+      { nombre: "Reconexión y frecuencia de muestreo", area: "desarrollo", inicio: "2026-10-13", fin: "2026-10-13", resp: "Diez Emiliano", avance: 100, bitacora: "Ajuste del tiempo entre mediciones y programación de reconexión automática ante caídas de WiFi." },
+      { nombre: "Inspección de prototipo ensamblado", area: "pm", inicio: "2026-10-13", fin: "2026-10-13", resp: "Ávila Sofia", avance: 0, bitacora: "Pruebas generales de resistencia y funcionalidad del conjunto armado." },
+      { nombre: "Fotografía y Manual Técnico", area: "io", inicio: "2026-10-13", fin: "2026-10-13", resp: "Raimondo Mia", avance: 50, bitacora: "Registro fotográfico del ensamble y redacción del Manual Técnico del sistema." },
+      { nombre: "Poster del proyecto", area: "aplicaciones", inicio: "2026-10-14", fin: "2026-10-23", resp: "Coronel Camila", avance: 50, bitacora: "Realizamos el poster para presentar el proyecto." },
+      { nombre: "Pruebas de campo en entorno real", area: "desarrollo", inicio: "2026-10-20", fin: "2026-10-20", resp: "Diez Emiliano · Madariaga Juliana", avance: 100, bitacora: "Medición real de humedad en tierra, variaciones de luz y detección de calidad de aire en vivo." },
+      { nombre: "Validación de historial y alertas", area: "aplicaciones", inicio: "2026-10-20", fin: "2026-10-20", resp: "Coronel Camila", avance: 0, bitacora: "Verificación de persistencia de datos históricos y recepción correcta de notificaciones de alerta." },
+      { nombre: "Gestión de correcciones", area: "pm", inicio: "2026-10-20", fin: "2026-10-20", resp: "Ávila Sofia", avance: 50, bitacora: "Coordinación para la resolución rápida de fallas detectadas en la prueba de campo." },
+      { nombre: "Manual de Usuario", area: "io", inicio: "2026-10-20", fin: "2026-10-20", resp: "Raimondo Mia", avance: 0, bitacora: "Redacción de la guía de uso del dispositivo para el usuario final." }
+    ]},
+    { etapa: "Etapa 7 · Cierre y presentación", tareas: [
+      { nombre: "Cierre de carpeta técnica", area: "io", inicio: "2026-10-27", fin: "2026-10-27", resp: "Raimondo Mia", avance: 0, bitacora: "Consolidación y revisión final del informe técnico, la bitácora y la documentación." },
+      { nombre: "Organización de presentación oral", area: "pm", inicio: "2026-10-27", fin: "2026-10-27", resp: "Ávila Sofia", avance: 0, bitacora: "Definición de la estructura de la exposición, asignación de temas y ensayo general." },
+      { nombre: "Congelamiento de código y hardware", area: "desarrollo", inicio: "2026-10-27", fin: "2026-10-27", resp: "Diez Emiliano · Madariaga Juliana · Coronel Camila", avance: 0, bitacora: "Verificación final de que el sistema físico, firmware y app funcionen sin hacer más modificaciones." },
+      { nombre: "Presentación en vivo", area: "pm", inicio: "2026-11-03", fin: "2026-11-03", resp: "Todo el equipo", avance: 0, bitacora: "Exposición oral del proyecto, demostración del dispositivo midiendo en tiempo real y entrega de carpeta.", hito: true }
     ]}
   ],
-  // Períodos sin clases que se sombrean en la Gantt
-  receso: [{ nombre: "Receso invernal", inicio: "2026-07-20", fin: "2026-07-31" }],
+  // Períodos sin clases que se sombrean en la Gantt (ninguno por ahora)
+  receso: [],
   // Duración de cada sprint en semanas (Scrum recomienda entre 1 y 4)
   semanasPorSprint: 3,
 

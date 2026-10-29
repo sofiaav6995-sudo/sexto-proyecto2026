@@ -11,9 +11,9 @@
   };
 
   const AREAS = {
-    pm: "Project Manager", hardware: "Lab. Hardware", so: "Lab. Sistemas Operativos",
-    desarrollo: "Desarrollo de Software", aplicaciones: "Lab. Aplicaciones",
-    io: "Investigación Operativa", seginfo: "Seguridad Informática"
+    pm: "Project Manager", hardware: "Infraestructura", so: "Lab. Sistemas Operativos",
+    desarrollo: "Desarrollo", aplicaciones: "Aplicaciones",
+    io: "Documentación", seginfo: "Seguridad Informática"
   };
 
   const ROLES = {
@@ -29,29 +29,21 @@
 
   const NODOS = {
     luz:       { nombre: "Nodo de luz (luxómetro)", lugar: "Aula 1", sensor: "BH1750", x: 120, y: 105 },
-    presencia: { nombre: "Nodo de presencia (PIR)", lugar: "Aula 2", sensor: "PIR HC-SR501", x: 330, y: 105 },
-    aire:      { nombre: "Nodo de calidad de aire (CO)", lugar: "Laboratorio de Hardware", sensor: "MQ-7", x: 550, y: 105 },
-    consumo:   { nombre: "Nodo de consumo eléctrico", lugar: "Sala de Informática", sensor: "ACS712 / SCT-013", x: 775, y: 105 },
-    ruido:     { nombre: "Nodo de ruido (dB)", lugar: "Pasillo / SUM", sensor: "KY-037", x: 330, y: 210 },
-    suelo:     { nombre: "Nodo de humedad de suelo", lugar: "Patio / huerta", sensor: "Capacitivo v1.2", x: 230, y: 365 },
+    suelo:     { nombre: "Nodo exterior", lugar: "Patio / huerta", sensor: "Capacitivo v1.2", x: 230, y: 365 },
     red:       { nombre: "Nodo de estado de red (latencia)", lugar: "Sala de servidores", sensor: "Software (ping + RSSI)", x: 500, y: 320 }
   };
   const SRV = { x: 602, y: 319 };
 
   const COMPONENTES = [
-    { img: "esp32-mini", nombre: "ESP32 mini", base: true, uso: "Microcontrolador con WiFi y Bluetooth: lee los sensores y envía los datos.", datos: [["Tensión", "3,3 V (VIN 5 V)"], ["Red", "WiFi 2,4 GHz"], ["ADC", "12 bits"]] },
-    { img: "dht22", nombre: "DHT22 (AM2302)", base: true, uso: "Mide temperatura y humedad relativa. Lo llevan todos los nodos.", datos: [["Rango", "−40 a 80 °C · 0–100 %"], ["Precisión", "±0,5 °C · ±2 %"], ["Interfaz", "Digital 1 cable"]] },
-    { img: "lcd-16x2", nombre: "Display LCD 16x2 I2C", base: true, uso: "Muestra los valores en el propio nodo, sin depender del dashboard.", datos: [["Interfaz", "I2C (2 cables)"], ["Dirección", "0x27 / 0x3F"], ["Tensión", "5 V"]] },
-    { img: "bateria-12v", nombre: "Batería 12 V", base: true, uso: "Respaldo de energía: el nodo sigue midiendo si se corta la luz.", datos: [["Tipo", "Plomo-ácido sellada"], ["Capacidad", "1,3 Ah (orientativo)"]] },
-    { img: "fuente-lm2596", nombre: "Fuente + regulador LM2596", base: true, uso: "Baja los 12 V a 5 V estables para el ESP32 y los sensores.", datos: [["Entrada", "4,5 – 40 V"], ["Salida", "Ajustable, 5 V"], ["Corriente", "hasta 2 A"]] },
-    { img: "placa-perforada", nombre: "Placa perforada", base: true, uso: "Versión definitiva soldada del circuito que se probó en protoboard.", datos: [["Medida", "7 × 9 cm (orientativo)"], ["Extras", "Borneras y headers hembra"]] },
-    { img: "bh1750", nombre: "BH1750 (luxómetro)", nodo: "luz", uso: "Mide la iluminación en lux. Sirve para saber si un aula tiene luz suficiente o luces encendidas sin uso.", datos: [["Rango", "1 – 65535 lx"], ["Interfaz", "I2C (0x23)"]] },
-    { img: "pir", nombre: "PIR HC-SR501", nodo: "presencia", uso: "Detecta movimiento de personas por infrarrojo. No identifica a nadie.", datos: [["Alcance", "hasta 7 m"], ["Salida", "Digital 3,3 V"]] },
-    { img: "mq-gas", nombre: "MQ-7 (monóxido de carbono)", nodo: "aire", uso: "Detecta CO. Necesita precalentamiento y calibración; los valores son orientativos. Alternativa: MQ-135 (calidad de aire general).", datos: [["Rango", "20 – 2000 ppm"], ["Salida", "Analógica"], ["Calentador", "5 V · ~150 mA"]] },
-    { img: "sonido", nombre: "KY-037 (sonido)", nodo: "ruido", uso: "Micrófono con salida analógica para estimar el nivel sonoro. Requiere calibrar contra un decibelímetro.", datos: [["Salida", "Analógica + digital"], ["Ajuste", "Potenciómetro"]] },
-    { img: "acs712", nombre: "ACS712 (corriente)", nodo: "consumo", uso: "Mide corriente de una carga. Por seguridad, para 220 V usen un sensor no invasivo tipo pinza SCT-013 y nunca intervengan la instalación de la escuela.", datos: [["Versiones", "5 / 20 / 30 A"], ["Salida", "Analógica"]] },
-    { img: "humedad-suelo", nombre: "Humedad de suelo capacitivo", nodo: "suelo", uso: "Mide la humedad de la tierra de la huerta. El capacitivo no se corroe como el resistivo.", datos: [["Tensión", "3,3 – 5 V"], ["Salida", "Analógica"]] },
-    { img: "red-wifi", nombre: "Monitoreo de red", nodo: "red", uso: "No usa sensor extra: el ESP32 mide la señal WiFi (RSSI) y la latencia (ping) hacia el servidor.", datos: [["Mide", "RSSI dBm · ms"], ["Hardware", "Solo el ESP32"]] }
+    { img: "esp32-mini.jpg", nombre: "ESP32 Super mini", base: true, uso: "Microcontrolador con WiFi y Bluetooth: lee los sensores y envía los datos.", datos: [["Tensión", "3,3 V (VIN 5 V)"], ["Red", "WiFi 2,4 GHz"], ["ADC", "12 bits"]] },
+    { img: "dht22.jpg", nombre: "DHT22 (AM2302)", base: true, uso: "Mide temperatura y humedad relativa. Lo llevan todos los nodos.", datos: [["Rango", "−40 a 80 °C · 0–100 %"], ["Precisión", "±0,5 °C · ±2 %"], ["Interfaz", "Digital 1 cable"]] },
+    { img: "lcd-16x2.jpg", nombre: "Display LCD 16x2 I2C", base: true, uso: "Muestra los valores en el propio nodo, sin depender del dashboard.", datos: [["Interfaz", "I2C (2 cables)"], ["Dirección", "0x27 / 0x3F"], ["Tensión", "5 V"]] },
+    { img: "bateria-12v.jpg", nombre: "Batería 12 V", base: true, uso: "Alimentación del nodo: se reduce con el step-down a una tensión segura para el ESP32 y los sensores.", datos: [["Tipo", "Plomo-ácido sellada"], ["Tensión", "12 V"]] },
+    { img: "fuente-lm2596.jpg", nombre: "Step-down (regulador de tensión)", base: true, uso: "Baja los 12 V de la batería a una tensión estable para el ESP32 y los sensores.", datos: [["Entrada", "12 V"], ["Salida", "3,3 V / 5 V"]] },
+    { img: "placa-perforada.jpg", nombre: "Placa experimental 5x7", base: true, uso: "Versión definitiva soldada del circuito que se probó en protoboard.", datos: [["Medida", "5 × 7 cm"], ["Extras", "Pines y borneras"]] },
+    { img: "bh1750.jpg", nombre: "BH1750 (luxómetro)", nodo: "luz", uso: "Mide la intensidad lumínica en lux. Sirve para saber cuánta luz recibe el lugar donde está instalado.", datos: [["Rango", "1 – 65535 lx"], ["Interfaz", "I2C (0x23)"]] },
+    { img: "humedad-suelo.jpg", nombre: "Humedad de suelo capacitivo", nodo: "suelo", uso: "Mide la humedad de la tierra. El capacitivo no se corroe como el resistivo.", datos: [["Tensión", "3,3 – 5 V"], ["Salida", "Analógica"]] },
+    { img: "red-wifi.svg", nombre: "Monitoreo de red", nodo: "red", uso: "No usa sensor extra: el ESP32 mide la señal WiFi (RSSI) y la latencia (ping) hacia el servidor.", datos: [["Mide", "RSSI dBm · ms"], ["Hardware", "Solo el ESP32"]] }
   ];
 
   /* ---------------------------------------------------------------- bindings */
@@ -202,7 +194,7 @@
     const mine = k === P.nodoAsignado;
     g.innerHTML = `<circle cx="${n.x}" cy="${n.y}" r="${mine ? 16 : 13}" class="${mine ? "d-accent" : "d-box"}"/>` +
       `<text class="d-title" x="${n.x}" y="${n.y + 4}" text-anchor="middle" font-size="11">N${i + 1}</text>` +
-      `<text class="d-small" x="${n.x}" y="${n.y + 30}" text-anchor="middle">${esc(n.nombre.replace(/^Nodo de /, "").replace(/ \(.*\)/, ""))}</text>`;
+      `<text class="d-small" x="${n.x}" y="${n.y + 30}" text-anchor="middle">${esc(n.nombre.replace(/^Nodo (de )?/, "").replace(/ \(.*\)/, ""))}</text>`;
     nodosMapa.appendChild(g);
   });
   $("#tablaNodos").innerHTML = Object.entries(NODOS).map(([k, n], i) =>
@@ -212,7 +204,7 @@
   const card = (c) => {
     const mine = c.nodo && c.nodo === P.nodoAsignado;
     return `<article class="card comp${mine ? " destacado" : ""}">
-      <figure><img src="assets/img/componentes/${c.img}.svg" alt="Ilustración: ${esc(c.nombre)}" width="240" height="160" loading="lazy"></figure>
+      <figure><img src="assets/img/componentes/${c.img}" alt="${/\.svg$/.test(c.img) ? "Ilustración" : "Foto"}: ${esc(c.nombre)}" width="240" height="160" loading="lazy"></figure>
       <div class="body">${mine ? '<span class="badge-asignado">Sensor de este equipo</span>' : ""}
         ${c.nodo ? `<span class="tag a-hardware" style="margin-bottom:6px">${esc(NODOS[c.nodo].nombre.replace(/ \(.*\)/, ""))}</span>` : ""}
         <h3>${esc(c.nombre)}</h3><p>${esc(c.uso)}</p>
@@ -225,18 +217,26 @@
   /* ---------------------------------------------------------------- Gantt */
   const DAY = 86400000;
   const d = (s) => new Date(s + "T00:00:00");
-  const G0 = d("2026-03-01"), G1 = d("2026-12-01");
+  // El rango del gráfico se calcula con las fechas de la planificación (de mes completo a mes completo)
+  const todas = (P.gantt || []).flatMap((et) => et.tareas);
+  const minF = new Date(Math.min(...todas.map((t) => d(t.inicio)))), maxF = new Date(Math.max(...todas.map((t) => d(t.fin))));
+  const G0 = new Date(minF.getFullYear(), minF.getMonth(), 1), G1 = new Date(maxF.getFullYear(), maxF.getMonth() + 1, 1);
   const span = G1 - G0;
   const pct = (date) => Math.max(0, Math.min(100, ((date - G0) / span) * 100));
-  const MESES = ["Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov"];
+  const NOMBRES_MES = ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"];
+  const meses = [];
+  for (let m = new Date(G0); m < G1; m = new Date(m.getFullYear(), m.getMonth() + 1, 1)) {
+    meses.push({ nombre: NOMBRES_MES[m.getMonth()], inicio: m, dias: new Date(m.getFullYear(), m.getMonth() + 1, 0).getDate() });
+  }
 
-  $("#ganttLegend").innerHTML = Object.entries(AREAS).map(([k, v]) => `<span class="tag a-${k}">${esc(v)}</span>`).join("");
+  const usadas = new Set(todas.map((t) => (AREAS[t.area] ? t.area : "pm")));
+  $("#ganttLegend").innerHTML = Object.entries(AREAS).filter(([k]) => usadas.has(k)).map(([k, v]) => `<span class="tag a-${k}">${esc(v)}</span>`).join("");
 
-  let rows = `<div class="g-row g-head"><div class="g-label">Tarea</div><div class="g-track">${MESES.map((m) => `<div>${m}</div>`).join("")}</div></div>`;
-  // fila de sprints
+  let rows = `<div class="g-row g-head"><div class="g-label">Tarea</div><div class="g-track" style="grid-template-columns:${meses.map((m) => m.dias + "fr").join(" ")}">${meses.map((m) => `<div>${m.nombre}</div>`).join("")}</div></div>`;
+  // fila de sprints (arrancan el lunes de la primera semana con tareas)
   const semanas = P.semanasPorSprint || 3;
-  let sprints = "", s = d("2026-03-02"), nro = 1;
-  while (s < d("2026-11-28")) {
+  let sprints = "", s = new Date(minF.getTime() - ((minF.getDay() + 6) % 7) * DAY), nro = 1;
+  while (s < G1) {
     const e = new Date(s.getTime() + semanas * 7 * DAY - 3 * DAY);
     sprints += `<div class="g-sprint" style="left:${pct(s)}%;width:${pct(e) - pct(s)}%" title="Sprint ${nro}">S${nro}</div>`;
     s = new Date(s.getTime() + semanas * 7 * DAY); nro++;
@@ -260,13 +260,30 @@
 
   // overlay: líneas de mes, receso y hoy
   let over = "";
-  for (let m = 1; m < 9; m++) over += `<div class="g-month" style="left:${pct(new Date(2026, 2 + m, 1))}%"></div>`;
+  meses.slice(1).forEach((m) => { over += `<div class="g-month" style="left:${pct(m.inicio)}%"></div>`; });
   (P.receso || []).forEach((r) => {
     over += `<div class="g-receso" style="left:${pct(d(r.inicio))}%;width:${pct(new Date(d(r.fin).getTime() + DAY)) - pct(d(r.inicio))}%" title="${esc(r.nombre)}"></div>`;
   });
   const hoy = new Date(); hoy.setHours(0, 0, 0, 0);
   if (hoy >= G0 && hoy < G1) over += `<div class="g-today" style="left:${pct(hoy)}%"><span>Hoy</span></div>`;
   $("#gantt-chart").innerHTML = `<div class="gantt-inner">${rows}<div class="g-overlay">${over}</div></div>`;
+
+  /* ---------------------------------------------------------------- tabla de planificación y bitácora */
+  const fmt = (iso) => { const [y, m, dd] = iso.split("-"); return `${dd}/${m}`; };
+  const tabla = $("#planTabla");
+  if (tabla) {
+    tabla.innerHTML = (P.gantt || []).map((et) =>
+      `<tr class="plan-etapa"><th colspan="6" scope="colgroup">${esc(et.etapa)}</th></tr>` +
+      et.tareas.map((t) => {
+        const av = Math.max(0, Math.min(100, Number(t.avance) || 0));
+        const area = AREAS[t.area] ? t.area : "pm";
+        return `<tr><td><span class="tag a-${area}">${esc(t.nombre)}</span></td><td>${esc(t.resp || "")}</td><td>${fmt(t.inicio)}</td><td>${fmt(t.fin)}</td>` +
+          `<td><div class="avance" role="img" aria-label="${av}% de avance"><span style="width:${av}%"></span></div><small>${av}%</small></td><td>${esc(t.bitacora || "")}</td></tr>`;
+      }).join("")).join("");
+    const tot = todas.length, prom = tot ? Math.round(todas.reduce((a, t) => a + (Number(t.avance) || 0), 0) / tot) : 0;
+    const res = $("#planResumen");
+    if (res) res.textContent = `${tot} tareas · avance promedio ${prom}%`;
+  }
 
   function scrollGanttToToday() {
     const box = $("#gantt-chart"), t = $(".g-today", box);
