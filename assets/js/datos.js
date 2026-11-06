@@ -132,7 +132,7 @@ window.PROYECTO = {
     { item: "Placa experimental 5x7", cant: 1, unit: 2630 },
     { item: "Pines", cant: 1, unit: 1000 },
     { item: "Cables macho-hembra", cant: 1, unit: 2900 },
-    { item: "Borneras", cant: 1, unit: 873 },
+    { item: "Borneras", cant: 1, unit: 500 },
     { item: "Caja de paso estanca", cant: 1, unit: 0 }
   ],
 
