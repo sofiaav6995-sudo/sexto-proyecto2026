@@ -122,17 +122,17 @@ window.PROYECTO = {
 
   // --- Presupuesto / BOM: precios en pesos argentinos (completar) ---
   bom: [
-    { item: "ESP32 Super mini", cant: 1, unit: 0 },
-    { item: "Sensor DHT22 (temperatura + humedad)", cant: 1, unit: 0 },
-    { item: "Sensor BH1750 (intensidad lumínica)", cant: 1, unit: 0 },
-    { item: "Sensor capacitivo de humedad de suelo", cant: 1, unit: 0 },
-    { item: "Display LCD con módulo I2C", cant: 1, unit: 0 },
+    { item: "ESP32 Super mini", cant: 1, unit: 6844 },
+    { item: "Sensor DHT22 (temperatura + humedad)", cant: 1, unit: 10490 },
+    { item: "Sensor BH1750 (intensidad lumínica)", cant: 1, unit: 3202 },
+    { item: "Sensor capacitivo de humedad de suelo", cant: 1, unit: 2244 },
+    { item: "Display LCD con módulo I2C", cant: 1, unit: 7331 },
     { item: "Batería 12 V", cant: 1, unit: 0 },
-    { item: "Step-down (regulador de tensión)", cant: 1, unit: 0 },
-    { item: "Placa experimental 5x7", cant: 1, unit: 0 },
-    { item: "Pines", cant: 1, unit: 0 },
-    { item: "Cables macho-hembra", cant: 1, unit: 0 },
-    { item: "Borneras", cant: 1, unit: 0 },
+    { item: "Step-down (regulador de tensión)", cant: 1, unit: 2157 },
+    { item: "Placa experimental 5x7", cant: 1, unit: 2630 },
+    { item: "Pines", cant: 1, unit: 1000 },
+    { item: "Cables macho-hembra", cant: 1, unit: 2900 },
+    { item: "Borneras", cant: 1, unit: 873 },
     { item: "Caja de paso estanca", cant: 1, unit: 0 }
   ],
 
