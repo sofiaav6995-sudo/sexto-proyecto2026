@@ -89,12 +89,6 @@
     </div>
   </div>
 
-  <div class="callout">
-    <strong><svg class="icon"><use href="#i-info"/></svg>Sobre este documento</strong>
-    <p>Esta es la <b>carpeta del proyecto</b>: reúne la planificación, el diseño técnico y el seguimiento del trabajo durante el año. Sigue los apartados de la <em>Documentación sugerida</em> de la propuesta ejecutiva del Proyecto Institucional 6to año 2026. Le suma dos análisis transversales: <b>Investigación Operativa</b> y <b>Seguridad Informática</b>.</p>
-    <p>Los recuadros amarillos marcan lo que <b>tiene que completar el equipo</b>.</p>
-  </div>
-
   <h2>Recorrido sugerido</h2>
   <div class="grid quick">
     <a class="card" href="#objetivo"><h3>1 · Presentación</h3><p>Objetivo, problema, alcances, equipo y asignaturas.</p></a>
@@ -159,10 +153,6 @@
     <thead><tr><th>Versión</th><th>Fecha</th><th>Responsable</th><th>Detalle del cambio</th></tr></thead>
     <tbody id="tablaCambios"></tbody>
   </table></div>
-  <div class="callout todo">
-    <strong><svg class="icon"><use href="#i-edit"/></svg>A completar por el equipo</strong>
-    <p>Las filas se editan en <code>datos.js → cambios</code>. Una fila por cada cambio de alcance, de diseño o de planificación. Anoten la fecha real del cambio.</p>
-  </div>
 </section>
 
 <!-- ================================================================ 2 OBJETIVO -->
@@ -301,10 +291,6 @@
   </table></div>
   <p><b>Auditor de los proyectos:</b> <span data-bind="auditor"></span></p>
 
-  <div class="callout todo">
-    <strong><svg class="icon"><use href="#i-edit"/></svg>A completar por el equipo</strong>
-    <p>Carguen sus nombres, roles y fotos en <code>datos.js → integrantes</code>. Las fotos van en <code>assets/img/integrantes/</code> (cuadradas, 400 × 400 px, formato .jpg o .webp). Si no hay foto se muestran las iniciales.</p>
-  </div>
 </section>
 
 <!-- ================================================================ 6 ASIGNATURAS -->
@@ -379,10 +365,6 @@
   </div>
   <p>Un sprint dura entre 1 y 4 semanas y nunca más de un mes. En este proyecto se usan sprints de <b><span data-bind="semanasPorSprint"></span> semanas</b> (se ven en la <a href="#gantt">carta Gantt</a>).</p>
 
-  <div class="callout todo">
-    <strong><svg class="icon"><use href="#i-edit"/></svg>A completar por el equipo</strong>
-    <p>Para cada sprint registren en la <a href="#pruebas">bitácora</a>: meta del sprint, tareas comprometidas, qué se entregó y la conclusión de la retrospectiva.</p>
-  </div>
 </section>
 
 <!-- ================================================================ 8 GANTT -->
@@ -403,10 +385,6 @@
   <div class="gantt-legend" id="ganttLegend"></div>
   <div class="gantt" id="gantt-chart" tabindex="0" aria-label="Carta Gantt, se puede desplazar horizontalmente"></div>
   <p style="font-size:13.5px;color:var(--text-2)">◆ Hito / entregable · Línea roja: hoy · Rayado: receso invernal. En pantallas chicas la tabla se desplaza hacia el costado.</p>
-  <div class="callout todo">
-    <strong><svg class="icon"><use href="#i-edit"/></svg>A completar por el equipo</strong>
-    <p>Para actualizar avances, fechas o la bitácora, editen <code>datos.js → gantt</code> (campos <code>avance</code>, <code>fin</code> y <code>bitacora</code>). Si una tarea se atrasa, actualicen la fecha de fin y anoten el cambio en el <a href="#cambios">control de cambios</a>.</p>
-  </div>
 </section>
 
 <!-- ================================================================ 9 ENTREGABLES -->
@@ -556,11 +534,6 @@
       <tr><td>Sensor capacitivo de humedad de suelo</td><td>VCC / GND / AD</td><td>Riel de 3,3 V, GND y GPIO 34</td><td>Entrada analógica (ADC)</td></tr>
     </tbody>
   </table></div>
-  <div class="callout todo">
-    <strong><svg class="icon"><use href="#i-edit"/></svg>A completar por el equipo</strong>
-    <p>Verifiquen los pines con el pinout de su placa ESP32 mini (cambian según el modelo) y adjunten el <b>esquema eléctrico</b> definitivo (Fritzing, KiCad o EasyEDA) en <code>assets/img/</code>.</p>
-  </div>
-
   <h2>11.3 Mapa de nodos</h2>
   <figure class="diagram">
     <svg viewBox="0 0 900 470" role="img" aria-labelledby="mapaT" id="mapaNodos">
@@ -602,10 +575,6 @@
   <div class="grid" id="compBase"></div>
   <h2>Sensores específicos</h2>
   <div class="grid" id="compEsp"></div>
-  <div class="callout todo">
-    <strong><svg class="icon"><use href="#i-info"/></svg>Sobre las imágenes</strong>
-    <p>Las fotos son de los componentes que compró el equipo. Si quieren cambiar alguna por una foto propia, súbanla a <code>assets/img/componentes/</code> con el mismo nombre (fondo claro). El monitoreo de red es una ilustración porque no usa un sensor físico.</p>
-  </div>
 </section>
 
 <!-- ================================================================ 13 DASHBOARD -->
@@ -643,10 +612,6 @@
     </tbody>
   </table></div>
   <p style="font-size:14px;color:var(--text-2)">Valores de referencia para el proyecto escolar. El equipo debe justificar los umbrales definitivos con fuentes.</p>
-  <div class="callout todo">
-    <strong><svg class="icon"><use href="#i-edit"/></svg>A completar por el equipo</strong>
-    <p>Maqueta UX/UI final, capturas de la vista de escritorio y de la vista móvil, paleta y logo del proyecto. Cuando esté publicado, carguen la dirección para verlo en <a href="#ver-proyecto">Ver el proyecto</a>.</p>
-  </div>
 </section>
 
 <!-- ================================================================ 14 PRESUPUESTO -->
@@ -658,10 +623,6 @@
     <thead><tr><th>Ítem</th><th class="num">Cant.</th><th class="num">Precio unit.</th><th class="num">Subtotal</th></tr></thead>
     <tbody id="tablaBOM"></tbody>
   </table></div>
-  <div class="callout todo">
-    <strong><svg class="icon"><use href="#i-edit"/></svg>A completar por el equipo</strong>
-    <p>Carguen los precios reales en <code>datos.js → bom</code> (campo <code>unit</code>, sin puntos ni signo $), con la fecha y el proveedor de la cotización.</p>
-  </div>
 </section>
 
 <!-- ================================================================ 15 PRUEBAS -->
@@ -678,10 +639,6 @@
     <thead><tr><th>Sprint</th><th>Meta</th><th>Entregado</th><th>Retrospectiva</th></tr></thead>
     <tbody><tr><td>1</td><td>—</td><td>—</td><td>—</td></tr><tr><td>2</td><td>—</td><td>—</td><td>—</td></tr></tbody>
   </table></div>
-  <div class="callout todo">
-    <strong><svg class="icon"><use href="#i-edit"/></svg>A completar por el equipo</strong>
-    <p>Agreguen pruebas en <code>datos.js → pruebas</code>. Estados posibles: <code>ok</code>, <code>falla</code>, <code>pendiente</code>. Adjunten capturas o fotos como evidencia.</p>
-  </div>
 </section>
 
 <!-- ================================================================ 16 RESULTADOS -->
@@ -689,10 +646,6 @@
   <p class="eyebrow">Seguimiento</p>
   <h1>16. Resultados y mejoras futuras</h1>
   <h2>Resultados</h2>
-  <div class="callout todo">
-    <strong><svg class="icon"><use href="#i-edit"/></svg>A completar por el equipo</strong>
-    <p>¿Qué se logró del Nivel 1 y del Nivel 2? ¿Qué datos reales midió el nodo? ¿Qué decisión puede tomar la escuela con esa información? Incluyan gráficos del histórico.</p>
-  </div>
   <h2>Mejoras futuras</h2>
   <ul>
     <li>Actualización de firmware por OTA.</li>
